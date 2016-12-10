@@ -1,5 +1,7 @@
 package it.getconnected.testdownloadimmagine;
 
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.PointF;
 
 public class Circle {
@@ -9,14 +11,17 @@ public class Circle {
     private float mRadius = 100.0f;
     private int mId;
     private PointF mOrigin;
+    private Paint paint;
 
     public Circle() {
-        mId = currentId++;
+        this(new PointF());
     }
 
     public Circle(PointF origin) {
         mOrigin = origin;
         mId = currentId++;
+        paint = new Paint();
+        paint.setAntiAlias(true);
     }
 
     public void setOrigin(PointF origin) {
@@ -43,7 +48,15 @@ public class Circle {
         return mId;
     }
 
-//    public boolean inCircle(PointF curr) {
+    public Paint getPaint() {
+        return paint;
+    }
+
+    public void setPaint(Paint paint) {
+        this.paint = paint;
+    }
+
+    //    public boolean inCircle(PointF curr) {
 //        return distanceSquared(curr) <= Math.pow(mRadius, 2);
 //    }
 
